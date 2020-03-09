@@ -1,0 +1,141 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "The AWS CloudFormation template for this Serverless application",
+    "Resources": {
+        "RaytioCognitoPool": {
+            "Type": "AWS::Cognito::UserPool",
+            "Properties": {
+                "UserPoolName": "MYNEWPOOL345678",
+                "EmailConfiguration": {
+                    "EmailSendingAccount": "DEVELOPER",
+                    "From": "msurab@amazon.com",
+                    "ReplyToEmailAddress": "msurabh@amazon.com",
+                    "SourceArn": "arn:aws:ses:us-east-1:193999962471:identity/msurab@amazon.com"
+                },
+                "MfaConfiguration": "OFF",
+                "Policies": {
+                    "PasswordPolicy": {
+                        "MinimumLength": 8,
+                        "RequireLowercase": true,
+                        "RequireNumbers": true,
+                        "RequireSymbols": true,
+                        "RequireUppercase": true,
+                        "TemporaryPasswordValidityDays": 7
+                    }
+                },
+                "Schema": [
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "gandalf_id",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 256,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "entities",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 1280,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "organisations",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 2048,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "kek_derivation",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 2048,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "dek_encryption",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 2048,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "dek_iv",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 2048,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "dek_data",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 2048,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "aek_public",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 2048,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "aek_private",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 2048,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "ask_public",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 2048,
+                            "MinLength": 1
+                        }
+                    },
+                    {
+                        "AttributeDataType": "String",
+                        "Mutable": true,
+                        "Name": "ask_private",
+                        "Required": false,
+                        "StringAttributeConstraints": {
+                            "MaxLength": 2048,
+                            "MinLength": 1
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
