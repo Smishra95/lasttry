@@ -5,7 +5,7 @@
         "RaytioCognitoPool": {
             "Type": "AWS::Cognito::UserPool",
             "Properties": {
-                "UserPoolName": "MYNEWPOOL345678",
+                "UserPoolName": "MYNEWPOOL2345678",
                 "EmailConfiguration": {
                     "EmailSendingAccount": "DEVELOPER",
                     "From": "msurab@amazon.com",
