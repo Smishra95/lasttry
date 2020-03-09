@@ -9,7 +9,7 @@
                 "EmailConfiguration": {
                     "EmailSendingAccount": "DEVELOPER",
                     "From": "msurab@amazon.com",
-                    "ReplyToEmailAddress": "msurabh@amazon.com",
+                    "ReplyToEmailAddress": "msurab@amazon.com",
                     "SourceArn": "arn:aws:ses:us-east-1:193999962471:identity/msurab@amazon.com"
                 },
                 "MfaConfiguration": "OFF",
