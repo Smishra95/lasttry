@@ -1,0 +1,8 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - Invoke-WebRequest -Uri "https://aka.ms/vs/16/release/vs_buildtools.exe" -OutFile "C:\vs_buildtools.exe"
+      - Start-Process -FilePath C:\vs_buildtools.exe -ArgumentList "--installPath", "C:\BuildTools2", "--add", "Microsoft.VisualStudio.Workload.VCTools", "--add", "Microsoft.VisualStudio.Workload.VisualStudioExtensionBuildTools", "--wait", "--quiet" -Wait -PassThru
+      - C:\BuildTools2\MSBuild\Current\bin\msbuild.exe -help
