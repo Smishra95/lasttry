@@ -1,7 +1,7 @@
 version: 0.2
 env:
   secrets-manager:
-    AWS_DEFAULT_REGION: om-code-build-secrets:AWS_DEFAULT_REGION
+    AWS_DEFAULT_REGION: my_access_key:AWS_DEFAULT_REGION
 phases:
   pre_build:
     commands:
