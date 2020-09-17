@@ -1,10 +1,10 @@
 version: 0.2
 env:
- variables:
-  AWS_DEFAULT_REGION: "us-west-2"
-  AWS_ACCOUNT_ID: "193999962471"
-  IMAGE_REPO_NAME: "test"
-  IMAGE_TAG: "latest"
+  secrets-manager:
+    AWS_DEFAULT_REGION: om-code-build-secrets:AWS_DEFAULT_REGION
+    AWS_ACCOUNT_ID: om-code-build-secrets:AWS_ACCOUNT_ID
+    IMAGE_REPO_NAME: om-code-build-secrets:IMAGE_REPO_NAME
+    IMAGE_TAG: om-code-build-secrets:IMAGE_TAG
 phases:
   pre_build:
     commands:
@@ -14,7 +14,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG --build-arg TAG=$IMAGE_TAG .
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG      
   post_build:
     commands:
