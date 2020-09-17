@@ -1,4 +1,5 @@
-FROM golang:1.12-alpine AS build
+ARG TAG=slim
+FROM golang:$TAG AS build
 #Install git
 RUN apk add --no-cache git
 #Get the hello world package from a GitHub repository
