@@ -7,5 +7,5 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - servicectl docker status
+      - systemctl docker status
       
