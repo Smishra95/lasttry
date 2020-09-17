@@ -1,10 +1,9 @@
 version: 0.2
+env:
+  secrets-manager:
+    AWS_DEFAULT_REGION: om-code-build-secrets:AWS_DEFAULT_REGION
 phases:
-  build:
+  pre_build:
     commands:
-      - choco install visualstudio2019professional -y --allWorkloads --includeRecommended --includeOptional --add Microsoft.VisualStudio.Workload.NativeDesktop --passive --norestart --wait --locale=en-US
-      - choco list
-    finally:
-      - '& "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe"'
-      - type C:\ProgramData\chocolatey\logs\chocolatey.log
-      - echo "End of 'finally' block"
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
