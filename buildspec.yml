@@ -1,5 +1,9 @@
 version: 0.2
-
+env:
+  AWS_DEFAULT_REGION: us-west-2
+  AWS_ACCOUNT_ID: 193999962471
+  IMAGE_REPO_NAME: test
+  IMAGE_TAG: latest
 phases:
   pre_build:
     commands:
