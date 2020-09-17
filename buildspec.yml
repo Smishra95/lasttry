@@ -5,5 +5,5 @@ env:
 phases:
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR... `$AWS_DEFAULT_REGION`
+      - echo Logging in to Amazon ECR...$AWS_DEFAULT_REGION
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
