@@ -1,6 +1,8 @@
 version: 0.2
 
 env:
+  variables:
+     DB_PORT: 3306
   secrets-manager:
     AWS_DEFAULT_REGION: arn:aws:secretsmanager:us-west-2:193999962471:secret:my_access_key-CQC9vl:AWS_DEFAULT_REGION
     AWS_ACCOUNT_ID: arn:aws:secretsmanager:us-west-2:193999962471:secret:my_access_key-CQC9vl:AWS_ACCOUNT_ID
@@ -17,6 +19,7 @@ phases:
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=193999962471.dkr.ecr.us-west-2.amazonaws.com/test
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - echo $DB_PORT
   build:
     commands:
       - echo Build started on `date`
