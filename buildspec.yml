@@ -20,12 +20,13 @@ phases:
       - IMAGE_TAG=${COMMIT_HASH:=test}
   build:
     commands:
-      - docker build -t $REPOSITORY_URI:test  .
-      - docker tag $REPOSITORY_URI:test $REPOSITORY_URI:$IMAGE_TAG
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG --build-arg TAG=$IMAGE_TAG .
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG     
   post_build:
     commands:
-      - docker push $REPOSITORY_URI:test
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - printf '[{"name":"backend-%s-container","imageUri":"%s"}]' ${DEVELOPMENT_STAGE} $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 
 artifacts:
