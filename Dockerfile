@@ -11,7 +11,7 @@ FROM ubuntu:$TAG
 # Install.
 RUN \
   apt-get update && \
-  apt-get -y upgrade && \
+  apt-get -y upgrade
 
 # Set environment variables.
 ENV HOME /root
