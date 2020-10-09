@@ -10,7 +10,6 @@ FROM ubuntu:$TAG
 
 # Install.
 RUN \
-  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
 
