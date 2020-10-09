@@ -5,10 +5,9 @@ proxy:
 env:
   secrets-manager:
     AWS_DEFAULT_REGION: arn:aws:secretsmanager:us-west-2:193999962471:secret:my_access_key-CQC9vl:AWS_DEFAULT_REGION
-    AWS_ACCOUNT_ID: my_access_key:AWS_ACCOUNT_ID
-    IMAGE_REPO_NAME: my_access_key:IMAGE_REPO_NAME
-    IMAGE_TAG: my_access_key:IMAGE_TAG
-    DB_PORT: 3306
+    AWS_ACCOUNT_ID: arn:aws:secretsmanager:us-west-2:193999962471:secret:my_access_key-CQC9vl:AWS_ACCOUNT_ID
+    IMAGE_REPO_NAME: arn:aws:secretsmanager:us-west-2:193999962471:secret:my_access_key-CQC9vl:IMAGE_REPO_NAME
+    IMAGE_TAG: arn:aws:secretsmanager:us-west-2:193999962471:secret:my_access_key-CQC9vl:IMAGE_TAG
 phases:
   pre_build:
     commands:
