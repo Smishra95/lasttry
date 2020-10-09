@@ -1,4 +1,4 @@
-ARG TAG=slim
+ARG TAG=16.04
 #
 # Ubuntu Dockerfile
 #
@@ -6,7 +6,7 @@ ARG TAG=slim
 #
 
 # Pull base image.
-FROM ubuntu:$IMAGE_TAG
+FROM ubuntu:$TAG
 
 # Install.
 RUN \
