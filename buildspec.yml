@@ -17,14 +17,14 @@ phases:
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=193999962471.dkr.ecr.us-west-2.amazonaws.com/test
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=${COMMIT_HASH:=$DEVELOPMENT_STAGE}
+      - IMAGE_TAG=${COMMIT_HASH:=test}
   build:
     commands:
-      - docker build -t $REPOSITORY_URI:$DEVELOPMENT_STAGE  .
-      - docker tag $REPOSITORY_URI:$DEVELOPMENT_STAGE $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t $REPOSITORY_URI:test  .
+      - docker tag $REPOSITORY_URI:test $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
-      - docker push $REPOSITORY_URI:$DEVELOPMENT_STAGE
+      - docker push $REPOSITORY_URI:test
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - printf '[{"name":"backend-%s-container","imageUri":"%s"}]' ${DEVELOPMENT_STAGE} $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 
